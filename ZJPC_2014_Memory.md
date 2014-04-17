@@ -1,0 +1,13 @@
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_165911.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_170635.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_171159.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_171204.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_171212.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_171216.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_173915.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_174000.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_190314.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_195107.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_195744.jpg)
+![](https://github.com/polym/polym.github.com/blob/master/photo/20140418/IMG_20140412_202135.jpg)
+
