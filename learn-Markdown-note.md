@@ -5,3 +5,8 @@
 ###2. 缺点
 ###功能相对较少
 ![](https://github.com/polym/polym.github.com/blob/master/tmp.jpg)
+##Code展示
+```
+cout << "Hello World" << endl;
+```
+`cout` 是C++的输出流 `end` 是换行
