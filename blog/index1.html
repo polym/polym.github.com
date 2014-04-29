@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+	<title>图灵社区 : 阅读 : 如何在Linux下使用Markdown进行文档工作</title>
+
+<link href="/css/github.css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="page">
+		<div id="header">
+			<div id="menucontainer">
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+
+<div class="row">
+    <div class="span9">
+        <div id="question-header">
+            <h1>
+                <a href="/article/10044">如何在Linux下使用Markdown进行文档工作</a> 
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="span8">
+                <div class="post-text">
+<h1>如何在Linux下使用Markdown进行文档工作</h1>
+
+<p>自从使用了markdown，做文档工作就很顺手。我几乎将工作中所有的文档工作都用markdown来完成。最近有了一些新的体验，也发现了一些新的问题。</p>
+
+<p>在Linux系统中，编辑markdown可以用retext工具：</p>
+
+<pre>
+# Debian/Ubuntu
+sudo apt-get install retext
+retext Release-Notes.md
+</pre>
+
+<p>要将markdown文件转换成html文件，可以用discount或python-markdown软件包提供的markdown：</p>
+
+<pre>
+# Debian/Ubuntu
+sudo apt-get install discount
+</pre>
+
+<p>或：</p>
+
+<pre>
+# Debian/Ubuntu
+sudo apt-get install python-markdown
+</pre>
+
+<p>转换工作很简单：</p>
+
+<pre>
+# 用discount提供的markdown工具
+markdown -o Release-Notes.html Release-Notes.md
+# 用python-markdown提供的markdown_py工具
+markdown_py -o html4 Release-Notest.md &gt; Release-Notes.html
+</pre>
+
+<p>如果要生成PDF，也很简单，可以用python-pisa提供的xhtml2pdf：</p>
+
+<pre>
+# Debian/Ubuntu
+sudo apt-get install python-pisa
+
+# 将html转换成PDF
+xhtml2pdf --html Release-Notes.html Release-Notes.pdf
+</pre>
+
+<p>所以，你可以在文档目录下放置这样一个Makefile来自动这个过程：</p>
+
+<pre>
+# Makefile
+
+MD = markdown
+MDFLAGS = -T
+H2P = xhtml2pdf
+H2PFLAGS = --html
+SOURCES := $(wildcard *.md)
+OBJECTS := $(patsubst %.md, %.html, $(wildcard *.md))
+OBJECTS_PDF := $(patsubst %.md, %.pdf, $(wildcard *.md))
+
+all: build
+
+build: html pdf
+
+pdf: $(OBJECTS_PDF)
+
+html: $(OBJECTS)
+
+$(OBJECTS_PDF): %.pdf: %.html
+    $(H2P) $(H2PFLAGS) $&lt; &gt; $@ 
+
+$(OBJECTS): %.html: %.md
+    $(MD) $(MDFLAGS) -o $@ $&lt;
+clean:
+    rm -f $(OBJECTS)
+</pre>
+
+<p>这样你就可以通过简单的一个命令生成当前目录下所有md文件的pdf或html输出了：</p>
+
+<pre>
+# html 输出
+make html
+
+# pdf输出
+make pdf
+</pre>
+
+<p>这里有个问题是如果markdown的内容是中文，那么转换出来的html在浏览器中打开就无法自动识别编码，pdf更惨，直接是一堆乱码。这时我们可以借助markdown对html标记的支持来在markdown文件中加入编码信息。例如我们要将markdown转换为html4文件，可以在文件的开头加上meta标记，指明编码格式：</p>
+
+<pre>
+sed -i &#39;1i\&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&#39; *.md
+</pre>
+
+<p>这样就可以了。另外，最近使用图灵社区的编辑系统时，markdown会时不时将下划线（_）当作斜体的标记，结果函数名就成了这样的：</p>
+
+<pre>
+# 实际上是ssl_use_cabundle
+sslusecabundle
+</pre>
+
+<p>我建议斜体字标记采用单个星号（*），加粗字体采用两个星号（**），这样使用起来就方便多了。当然，这个问题本身在于markdown说用星号或下划线都可以。但实际上，两个都支持反倒会造成一些问题。比如有的地方用下划线（__粗体__ -&gt; <strong>粗体</strong>），有的地方用星号（**粗体** -&gt; <strong>粗体</strong>），看起来反倒混乱不堪（选星号*的另一个理由是下划线在内容中出现的概率比星号高很多）。</p>
+
+<p>建议图灵社区的在线编辑系统指定其中一种，然后在例子中和在线编辑器里都采用统一的一种，这样大多数人一看就明白该用哪种了。</p>
+
+<hr/>
+
+                </div>
+
+            </div>
+	</div>
+    </div>
+</div>
+
+		</div>
+	</div>
+</body>
+
+</html>
