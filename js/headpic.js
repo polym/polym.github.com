@@ -1,4 +1,5 @@
-	 var number = 0;
+	 var number = Math.floor(5 * Math.random());
+//	 document.write(number);
      var timeOut = null;
      var picture = new Array(5);
      for (var i = 0; i < picture.length; i++){

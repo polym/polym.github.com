@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="span1 votecell">
+		<div class="vote">
+		<strong>
+DAY
+		</strong>
+		<p>
+MONTH
+		</p>
+		</div>
+	</div>
+	<div class="span8">
+		<div class="post-text">
+ARTICLE	
+		</div>
+	</div>
+</div>

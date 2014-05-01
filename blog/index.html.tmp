@@ -1,29 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>
-Polym's Blog
-</title>
-<link href="/css/github.css" type="text/css" rel="stylesheet"/>
-<link rel="shortcut icon" href="/photo/images.jpg"/>
-<script language="javascript" type="text/javascript" src="/js/headpic.js"> </script>
-</head>
-<body>
-
-<div class="page">
-<a href="/blog/"><h1> Polym's Blog </h1></a><h1>|</h1>
-<hr>
-<img alt="" name="head_pic" src="" height=300 width=1000"/>
-<script>
-if(timeOut == null){
-loadImage();
-playImage();
-}
-</script>
-<div id="main" class="clearfix">
-<div class="row">
-<div class="span9">
 <div class="row">
 <div class="span1 votecell">
 <div class="vote">
@@ -37,12 +11,12 @@ playImage();
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/awk_cs.html"><h1>如何在Linux下使用Markdown进行文档工作</h1></a>
+<h1>如何在Linux下使用Markdown进行文档工作</h1>
 <hr>
 
 <blockquote>
-<p>awk
-using it to modify str more efficient </p>
+<p>awk 
+   using it to modify str more efficient   </p>
 </blockquote>
 <p><code>awk -F' ' 'BEGIN{print "it"}' '{print $0}' filename</code></p>
 </div>
@@ -61,26 +35,26 @@ using it to modify str more efficient </p>
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/HTML_LEARN.html"><h1>学习HTML+CSS</h1></a>
+<h1>学习HTML+CSS</h1>
 <hr>
 
 <p>我的博客模板
 <code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;meta charset="utf-8"/&gt;
-&lt;title&gt;blog-name&lt;/title&gt;
-&lt;link href="/css/github.css" type="text/css" rel="stylesheet"/&gt;
+    &lt;meta charset="utf-8"/&gt;
+    &lt;title&gt;blog-name&lt;/title&gt;
+    &lt;link href="/css/github.css" type="text/css" rel="stylesheet"/&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div class="page"&gt;
-&lt;div class="clearfix"&gt;
-&lt;div class="span8"&gt;
-&lt;div class="post-text"&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+    &lt;div class="page"&gt;
+    &lt;div class="clearfix"&gt;
+    &lt;div class="span8"&gt;
+    &lt;div class="post-text"&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></p>
 </div>
@@ -99,7 +73,7 @@ using it to modify str more efficient </p>
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/HAPPY.html"><h1>博客进展</h1></a>
+<h1>博客进展</h1>
 <hr>
 
 <p>博客终于初见模型啊，虽然引用了一些其他网站的元素，但是总体还是靠自己实现的。花了点时间学习了下JS与CSS。感觉还不错。</p>
@@ -120,7 +94,7 @@ using it to modify str more efficient </p>
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/ACM_GUASS_ALGO.html"><h1>高斯消元 自我小结 （实在无力了）</h1></a>
+<h1>高斯消元 自我小结 （实在无力了）</h1>
 <hr>
 
 <p>最近两天搞了下高斯消元，真的差点被“搞死”了。在此小结下。</p>
@@ -129,16 +103,10 @@ using it to modify str more efficient </p>
 对于AX=B的线性方程组，如果我们要求解X，我们首先应该确保有解。</p>
 <p>解的讨论分一下3种情况：</p>
 <ul>
-<li>X 无解。系数矩阵的秩 &lt; 扩展矩阵的秩</li>
-<li>X 有唯一解。 系数矩阵的秩 == 扩展矩阵的秩 == 未知数数</li>
-<li>X 有无穷多解。系数矩阵的秩 == 扩展矩阵的秩序 &amp;gt 未知数数</li>
+<li>X   无解。系数矩阵的秩 &lt; 扩展矩阵的秩</li>
+<li>X   有唯一解。 系数矩阵的秩 == 扩展矩阵的秩  ==  未知数数</li>
+<li>X   有无穷多解。系数矩阵的秩  == 扩展矩阵的秩序 &amp;gt 未知数数</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</body>
-</html>
