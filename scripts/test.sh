@@ -1,4 +1,4 @@
-template=$BLOG/template/version1.1.1
+template=$BLOG/template/version1.1.2
 for file in $BLOG/note/*.md
 do
   echo "processing $file ..."
