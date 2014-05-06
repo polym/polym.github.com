@@ -51,6 +51,14 @@ playImage();
 <code>vid = w * vid + c1 * rand() * (pid - xid) + c2 * rand() * (pgd - xid)
 xid = xid+vid</code></li>
 </ul>
+<h2>3、算法的流程</h2>
+<p><code>Step 1：初始化一群粒子（群体规模为m），包括随机位置与速度
+Step 2：评价每个粒子的适应度
+Step 3: 对于每个粒子，将其适应值与其经历过的最好位置pbest作比较，如果较好，则将其作为当前的最好位置pbest
+Step 4：对于每个粒子，将其适应值与全局所经历的最好位置gbest作比较，如果较好，则重新设置gbest的索引号
+Step 5：根据移动状态转移方程更新每个粒子的位置与速度
+Step 6：如未达到结束条件（通常为足够好的适应值或达到一个预设最大代数Gmax），则返回Step 2</code>
+<a href="/attach/PSO_algo.py.x">python实现代码</a></p>
 </div>
 </div>
 </div>
