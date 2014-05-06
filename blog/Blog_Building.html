@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>
+Polym's Blog| github+shell+mkdown 搭建静态博客
+</title>
+<link href="/css/github.css" type="text/css" rel="stylesheet"/>
+<link rel="shortcut icon" href="/photo/images.jpg"/>
+<script language="javascript" type="text/javascript" src="/js/headpic.js"> </script>
+</head>
+<body>
+
+<div class="page">
+<a href="/blog/"><h1> Polym's Blog </h1></a><h1>|</h1>
+<hr>
+<img alt="" name="head_pic" src="" height=300 width=1000"/>
+<script>
+if(timeOut == null){
+loadImage();
+playImage();
+}
+</script>
+<div id="main" class="clearfix">
+<div class="row">
+<div class="span9">
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+03
+</strong>
+<p>
+05/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<h1>github+shell+mkdown 搭建静态博客</h1>
+<h2>1、背景</h2>
+<h3>github - 展示平台</h3>
+<p>基于git的一个开放的代码托管平台。开始接触git已经是大三的事了，不得不感慨下，大学生活啊。大一大二每天平均8节课的状态，与高中无异，学了些基础的课程。大三开始逐渐发现自己的水平仅仅停留在理论的水平，没有实践理论又有何用啊。题外话哈~~~ 使用github，最初的目的只是为了维护一些算法实现代码。支持web修改增加代码文件，十分方面了。</p>
+<h3>shell - 著名的脚本语言</h3>
+<p>选择shell的原因：简单粗暴而且我有一定实践基础。shell在搭建静态博客的过程中主要起到的是后台支撑的作用，处理一些简单的文件操作。实践经验，还要归功于在亚信实习的这段时间，接触了shell脚本，学到了很多。虽然离开公司了，但是还是感激不尽啊，想念你们同事~~</p>
+<h3>mkdown - 轻量级的标记语言</h3>
+<p>十分方便的一种语言，无需关心最终的排版方式。在很长一段时间里，我十分讨厌写文档，对齐、字体大小、间距等一直困扰着我。自从在github上发现了mkdown之后，我一下子就爱上它了，perfect！！！</p>
+<h2>2、具体架构</h2>
+<p>开始说架构之前，我不得不先承认个事实，那就是我在搭这个博客之前，完全没有网页前端的基础。以下只是我个人的一些想法跟做法，还不知道可不科学。</p>
+<h3>如何把mkdown转换成html？</h3>
+<p>强大的python有个mkdown模块是专门用来将mkdown文本转化成html格式的。只需要自己加上&lt;head>就可以了。</p>
+<h3>如何将html展现？</h3>
+<p>如何将html以最为令人赏心悦目的方式展现出来呢？这就只能依靠css来进行排版。完全不会css啊，how to play？<em>最快的方式学会一样东西，就是从模仿开始</em> 查看很多网站以及博客，终于找到了一个自己认为比较舒适的css，于是就拿来用了。也就是现在大家看到的这个布局方式。</p>
+<h2>3、总结</h2>
+<p>最后做个总结吧。就博客现在这种状态，不得不说有点朴素。但是这却是我花了3天的时间搞的，5555555。能力有限啊。反正这也只是雏形，以后慢慢优化吧...在搭建博客的过程中，对自己完全没有涉猎的领域有了一定的了解，并且自己实现了一把，想想还是有点小激动啊。现在想来不就这么点事？唉，还是太菜~~~中文支持貌似是硬伤，迟早会暴露的，抽空去看点字符集的知识。</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

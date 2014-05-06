@@ -7,7 +7,7 @@ addhref () {
 	  then
 		echo "<a href=\"$2\">$line</a>" >> $1.tmp
 	  else
-		echo $line >> $1.tmp
+		echo "$line" >> $1.tmp
       fi
 	done
 	mv $1.tmp $1

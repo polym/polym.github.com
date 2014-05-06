@@ -5,7 +5,8 @@ flag=$4
 nhtml=`basename $file`
 nhtml=${nhtml%.*}.html
 
-title="Polym's Blog| "`head -1 $1 | cut -c2-`
+title="Polym's Blog| "`head -1 $1`
+title=${title##*#}
 day=`stat -c %y $1 | grep -o '\-[0-9]\{2\} ' | cut -c2-3`
 year=`stat -c %y $1 | grep -o '[0-9]\{4\}\-' | cut -c1-4`
 month=`stat -c %y $1 | grep -o '\-[0-9]\{2\}\-' | cut -c2-3`
@@ -32,7 +33,7 @@ do
 	echo "$body" >> $html
 	;;
 	*)
-	echo $line >> $html
+	echo "$line" >> $html
 	;;
   esac
 done
