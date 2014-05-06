@@ -1,5 +1,6 @@
 github+shell+mkdown 搭建静态博客
 ===
+<hr>
 
 ##1、背景
 

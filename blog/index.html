@@ -37,35 +37,9 @@ playImage();
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/PSO_Algorithm.html"><h1>PSO粒子群算法</h1></a>
-<h2>1、基本概念</h2>
-<p>粒子群算法(Particle Swarm Optimization, PSO)，是由J.Kenndey和R.C.Eberhart等于1995年开发的一种演化计算技术，来源于一个简化社会模型的模拟。PSO算法最初是为了图形化的模拟鸟群优美而不可预测的运动。而通过对动物社会行为的观察，发现在群体中对信息的社会共享提供一个演化的优势，并以此作为开发算法。通过加入近邻的速度匹配、并考虑了多维搜索和根据距离加速，形成了PSO的最初版本。之后引入惯性权重w来控制飞行的趋势，形成标准版本。</p>
-<h2>2、算法的精髓</h2>
-<ul>
-<li>对于一个多维的问题，通过PSO算法后，最优解即为全局最优解(gbest)。</li>
-<li>随机初始化，粒子的位置与速度。</li>
-<li>迭代更新个体自身所经历的最优解以及群体全局的最优解。</li>
-<li>移动状态转移方程：
-<code>vid = w * vid + c1 * rand() * (pid - xid) + c2 * rand() * (pgd - xid)
-xid = xid+vid</code></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="span1 votecell">
-<div class="vote">
-<strong>
-03
-</strong>
-<p>
-05/2014
-</p>
-</div>
-</div>
-<div class="span8">
-<div class="post-text">
 <a href="/blog/Blog_Building.html"><h1>github+shell+mkdown 搭建静态博客</h1></a>
+<hr>
+
 <h2>1、背景</h2>
 <h3>github - 展示平台</h3>
 <p>基于git的一个开放的代码托管平台。开始接触git已经是大三的事了，不得不感慨下，大学生活啊。大一大二每天平均8节课的状态，与高中无异，学了些基础的课程。大三开始逐渐发现自己的水平仅仅停留在理论的水平，没有实践理论又有何用啊。题外话哈~~~ 使用github，最初的目的只是为了维护一些算法实现代码。支持web修改增加代码文件，十分方面了。</p>
@@ -81,6 +55,36 @@ xid = xid+vid</code></li>
 <p>如何将html以最为令人赏心悦目的方式展现出来呢？这就只能依靠css来进行排版。完全不会css啊，how to play？<em>最快的方式学会一样东西，就是从模仿开始</em> 查看很多网站以及博客，终于找到了一个自己认为比较舒适的css，于是就拿来用了。也就是现在大家看到的这个布局方式。</p>
 <h2>3、总结</h2>
 <p>最后做个总结吧。就博客现在这种状态，不得不说有点朴素。但是这却是我花了3天的时间搞的，5555555。能力有限啊。反正这也只是雏形，以后慢慢优化吧...在搭建博客的过程中，对自己完全没有涉猎的领域有了一定的了解，并且自己实现了一把，想想还是有点小激动啊。现在想来不就这么点事？唉，还是太菜~~~中文支持貌似是硬伤，迟早会暴露的，抽空去看点字符集的知识。</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+06
+</strong>
+<p>
+05/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<a href="/blog/PSO_Algorithm.html"><h1>PSO粒子群算法</h1></a>
+<hr>
+
+<h2>1、基本概念</h2>
+<p>粒子群算法(Particle Swarm Optimization, PSO)，是由J.Kenndey和R.C.Eberhart等于1995年开发的一种演化计算技术，来源于一个简化社会模型的模拟。PSO算法最初是为了图形化的模拟鸟群优美而不可预测的运动。而通过对动物社会行为的观察，发现在群体中对信息的社会共享提供一个演化的优势，并以此作为开发算法。通过加入近邻的速度匹配、并考虑了多维搜索和根据距离加速，形成了PSO的最初版本。之后引入惯性权重w来控制飞行的趋势，形成标准版本。</p>
+<h2>2、算法的精髓</h2>
+<ul>
+<li>对于一个多维的问题，通过PSO算法后，最优解即为全局最优解(gbest)。</li>
+<li>随机初始化，粒子的位置与速度。</li>
+<li>迭代更新个体自身所经历的最优解以及群体全局的最优解。</li>
+<li>移动状态转移方程：
+<code>vid = w * vid + c1 * rand() * (pid - xid) + c2 * rand() * (pgd - xid)
+xid = xid+vid</code></li>
+</ul>
 </div>
 </div>
 </div>
