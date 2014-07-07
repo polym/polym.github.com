@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>
+Polym's Blog| Git 学习笔记以及命令速查
+</title>
+<link href="/css/github.css" type="text/css" rel="stylesheet"/>
+<link rel="shortcut icon" href="/photo/images.jpg"/>
+<script language="javascript" type="text/javascript" src="/js/headpic.js"> </script>
+</head>
+<body>
+
+<div class="page">
+<a href="/blog/"><h1> Polym's Blog </h1></a><h1>|</h1>
+<hr>
+<img alt="" name="head_pic" src="" height=300 width=1000"/>
+<script>
+if(timeOut == null){
+loadImage();
+playImage();
+}
+</script>
+<div id="main" class="clearfix">
+<div class="row">
+<div class="span9">
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+07
+</strong>
+<p>
+07/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<h1>Git 学习笔记以及命令速查</h1>
+<p>初始化一个Git仓库，使用git init命令。</p>
+<p>添加文件到Git仓库，分两步：</p>
+<p>第一步，使用命令git add ，注意，可反复多次使用，添加多个文件；
+第二步，使用命令git commit，完成。</p>
+<p>命令<em>git rm</em>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<p>要克隆一个仓库，首先必须知道仓库的地址，然后使用<em>git clone</em>命令克隆。</p>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<p>Git鼓励大量使用分支：</p>
+<p>查看分支：git branch</p>
+<p>创建分支：git branch name</p>
+<p>切换分支：git checkout name</p>
+<p>创建+切换分支：git checkout -b name</p>
+<p>合并某分支到当前分支：git merge name</p>
+<p>删除分支：git branch -d name</p>
+<p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
+<p>用<em>git log --graph</em>命令可以看到分支合并图。</p>
+<p>Git分支十分强大，在团队开发中应该充分应用。</p>
+<p>合并分支时，加上<em>--no-ff</em>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而<em>fast forward</em>合并就看不出来曾经做过合并。</p>
+<p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</p>
+<p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过<em>git branch -D name</em>强行删除。</p>
+<p>当手头工作没有完成时，先把工作现场<em>git stash</em>一下，然后去修复bug，修复后，再<em>git stash pop</em>，回到工作现场。</p>
+<p>查看远程库信息，使用<em>git remote -v</em>；
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+从本地推送分支，使用<em>git push origin branch-name</em>，如果推送失败，先用<em>git pull</em>抓取远程的新提交；
+在本地创建和远程分支对应的分支，使用<em>git checkout -b branch-name origin/branch-name</em>，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用<em>git branch --set-upstream branch-name origin/branch-name</em>；
+从远程抓取分支，使用<em>git pull</em>，如果有冲突，要先处理冲突。</p>
+<p>命令<em>git tag name</em>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+-a tagname -m "blablabla..."可以指定标签信息；
+-s tagname -m "blablabla..."可以用PGP签名标签；
+命令<em>git tag</em>可以查看所有标签；</p>
+<p>命令<em>git push origin tagname</em>可以推送一个本地标签；
+命令<em>git push origin --tags</em>可以推送全部未推送过的本地标签；
+命令<em>git tag -d tagname</em>可以删除一个本地标签；
+命令<em>git push origin :refs/tags/tagname</em>可以删除一个远程标签。</p>
+<p>忽略某些文件时，需要编写<em>.gitignore</em>。
+.gitignore文件本身要放到版本库里，并且可以对<em>.gitignore</em>做版本管理！</p>
+<p>给Git配置好别名，就可以输入命令时偷个懒。我们鼓励偷懒。</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

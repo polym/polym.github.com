@@ -12,8 +12,8 @@ addhref () {
 	done
 	mv $1.tmp $1
 }
-export WORK=$HOME/work
-export BLOG=$WORK/blog
+export WORK=$HOME/work/polym.github.com
+export BLOG=$WORK
 
 template=$BLOG/template/version1.1.2
 index=$BLOG/template/article

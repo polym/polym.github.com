@@ -28,10 +28,90 @@ playImage();
 <div class="span1 votecell">
 <div class="vote">
 <strong>
-06
+07
 </strong>
 <p>
-05/2014
+07/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<a href="/blog/Git_learn.html"><h1>Git 学习笔记以及命令速查</h1></a>
+<p>初始化一个Git仓库，使用git init命令。</p>
+<p>添加文件到Git仓库，分两步：</p>
+<p>第一步，使用命令git add ，注意，可反复多次使用，添加多个文件；
+第二步，使用命令git commit，完成。</p>
+<p>命令<em>git rm</em>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<p>要克隆一个仓库，首先必须知道仓库的地址，然后使用<em>git clone</em>命令克隆。</p>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<p>Git鼓励大量使用分支：</p>
+<p>查看分支：git branch</p>
+<p>创建分支：git branch name</p>
+<p>切换分支：git checkout name</p>
+<p>创建+切换分支：git checkout -b name</p>
+<p>合并某分支到当前分支：git merge name</p>
+<p>删除分支：git branch -d name</p>
+<p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
+<p>用<em>git log --graph</em>命令可以看到分支合并图。</p>
+<p>Git分支十分强大，在团队开发中应该充分应用。</p>
+<p>合并分支时，加上<em>--no-ff</em>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而<em>fast forward</em>合并就看不出来曾经做过合并。</p>
+<p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</p>
+<p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过<em>git branch -D name</em>强行删除。</p>
+<p>当手头工作没有完成时，先把工作现场<em>git stash</em>一下，然后去修复bug，修复后，再<em>git stash pop</em>，回到工作现场。</p>
+<p>查看远程库信息，使用<em>git remote -v</em>；
+本地新建的分支如果不推送到远程，对其他人就是不可见的；
+从本地推送分支，使用<em>git push origin branch-name</em>，如果推送失败，先用<em>git pull</em>抓取远程的新提交；
+在本地创建和远程分支对应的分支，使用<em>git checkout -b branch-name origin/branch-name</em>，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用<em>git branch --set-upstream branch-name origin/branch-name</em>；
+从远程抓取分支，使用<em>git pull</em>，如果有冲突，要先处理冲突。</p>
+<p>命令<em>git tag name</em>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+-a tagname -m "blablabla..."可以指定标签信息；
+-s tagname -m "blablabla..."可以用PGP签名标签；
+命令<em>git tag</em>可以查看所有标签；</p>
+<p>命令<em>git push origin tagname</em>可以推送一个本地标签；
+命令<em>git push origin --tags</em>可以推送全部未推送过的本地标签；
+命令<em>git tag -d tagname</em>可以删除一个本地标签；
+命令<em>git push origin :refs/tags/tagname</em>可以删除一个远程标签。</p>
+<p>忽略某些文件时，需要编写<em>.gitignore</em>。
+.gitignore文件本身要放到版本库里，并且可以对<em>.gitignore</em>做版本管理！</p>
+<p>给Git配置好别名，就可以输入命令时偷个懒。我们鼓励偷懒。</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+07
+</strong>
+<p>
+07/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<a href="/blog/awk_cs.html"><h1>如何在Linux下使用Markdown进行文档工作</h1></a>
+<hr>
+
+<blockquote>
+<p>awk
+using it to modify str more efficient   </p>
+</blockquote>
+<p><code>awk -F' ' 'BEGIN{print "it"}' '{print $0}' filename</code></p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+07
+</strong>
+<p>
+07/2014
 </p>
 </div>
 </div>
@@ -66,10 +146,39 @@ Step 6：如未达到结束条件（通常为足够好的适应值或达到一�
 <div class="span1 votecell">
 <div class="vote">
 <strong>
-06
+07
 </strong>
 <p>
-05/2014
+07/2014
+</p>
+</div>
+</div>
+<div class="span8">
+<div class="post-text">
+<a href="/blog/ACM_GUASS_ALGO.html"><h1>高斯消元 自我小结 （实在无力了）</h1></a>
+<hr>
+
+<p>最近两天搞了下高斯消元，真的差点被“搞死”了。在此小结下。</p>
+<p>高斯消元，学过线代的，应该都有所耳闻。什么化成“行阶梯形”，然后再化成“行最简行”。在此也对TM老师表示愧疚之情（好像忘掉差不多了）。</p>
+<p>言归正传，高斯消元到底可以做些什么？ 我的答案是解线性方程组。AX=B。求解X。此类问题是最典型的。当然还有求秩之类的。求秩方面的运用暂时不做总结。
+对于AX=B的线性方程组，如果我们要求解X，我们首先应该确保有解。</p>
+<p>解的讨论分一下3种情况：</p>
+<ul>
+<li>X   无解。系数矩阵的秩 &lt; 扩展矩阵的秩</li>
+<li>X   有唯一解。 系数矩阵的秩 == 扩展矩阵的秩  ==  未知数数</li>
+<li>X   有无穷多解。系数矩阵的秩  == 扩展矩阵的秩序 &lt; 未知数数</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="span1 votecell">
+<div class="vote">
+<strong>
+07
+</strong>
+<p>
+07/2014
 </p>
 </div>
 </div>
@@ -100,28 +209,20 @@ Step 6：如未达到结束条件（通常为足够好的适应值或达到一�
 <div class="span1 votecell">
 <div class="vote">
 <strong>
-01
+07
 </strong>
 <p>
-05/2014
+07/2014
 </p>
 </div>
 </div>
 <div class="span8">
 <div class="post-text">
-<a href="/blog/ACM_GUASS_ALGO.html"><h1>高斯消元 自我小结 （实在无力了）</h1></a>
+<a href="/blog/HAPPY.html"><h1>博客进展</h1></a>
 <hr>
 
-<p>最近两天搞了下高斯消元，真的差点被“搞死”了。在此小结下。</p>
-<p>高斯消元，学过线代的，应该都有所耳闻。什么化成“行阶梯形”，然后再化成“行最简行”。在此也对TM老师表示愧疚之情（好像忘掉差不多了）。</p>
-<p>言归正传，高斯消元到底可以做些什么？ 我的答案是解线性方程组。AX=B。求解X。此类问题是最典型的。当然还有求秩之类的。求秩方面的运用暂时不做总结。
-对于AX=B的线性方程组，如果我们要求解X，我们首先应该确保有解。</p>
-<p>解的讨论分一下3种情况：</p>
-<ul>
-<li>X   无解。系数矩阵的秩 &lt; 扩展矩阵的秩</li>
-<li>X   有唯一解。 系数矩阵的秩 == 扩展矩阵的秩  ==  未知数数</li>
-<li>X   有无穷多解。系数矩阵的秩  == 扩展矩阵的秩序 &lt; 未知数数</li>
-</ul>
+<p>博客终于初见模型啊，虽然引用了一些其他网站的元素，但是总体还是靠自己实现的。花了点时间学习了下JS与CSS。感觉还不错。</p>
+<p>现在的问题就是vim里面中英文输入法切换十分蛋疼啊。博客还有些小细节需要搞下。主界面需要设计下。</p>
 </div>
 </div>
 </div>
@@ -129,34 +230,10 @@ Step 6：如未达到结束条件（通常为足够好的适应值或达到一�
 <div class="span1 votecell">
 <div class="vote">
 <strong>
-01
+07
 </strong>
 <p>
-05/2014
-</p>
-</div>
-</div>
-<div class="span8">
-<div class="post-text">
-<a href="/blog/awk_cs.html"><h1>如何在Linux下使用Markdown进行文档工作</h1></a>
-<hr>
-
-<blockquote>
-<p>awk
-using it to modify str more efficient   </p>
-</blockquote>
-<p><code>awk -F' ' 'BEGIN{print "it"}' '{print $0}' filename</code></p>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="span1 votecell">
-<div class="vote">
-<strong>
-01
-</strong>
-<p>
-05/2014
+07/2014
 </p>
 </div>
 </div>
@@ -184,27 +261,6 @@ using it to modify str more efficient   </p>
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></p>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="span1 votecell">
-<div class="vote">
-<strong>
-01
-</strong>
-<p>
-05/2014
-</p>
-</div>
-</div>
-<div class="span8">
-<div class="post-text">
-<a href="/blog/HAPPY.html"><h1>博客进展</h1></a>
-<hr>
-
-<p>博客终于初见模型啊，虽然引用了一些其他网站的元素，但是总体还是靠自己实现的。花了点时间学习了下JS与CSS。感觉还不错。</p>
-<p>现在的问题就是vim里面中英文输入法切换十分蛋疼啊。博客还有些小细节需要搞下。主界面需要设计下。</p>
 </div>
 </div>
 </div>
