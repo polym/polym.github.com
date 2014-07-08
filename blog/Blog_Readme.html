@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>
+博客简介
+</title>
+<link href="/css/github.css" type="text/css" rel="stylesheet"/>
+<link rel="shortcut icon" href="/photo/images.jpg"/>
+<script language="javascript" type="text/javascript" src="/js/headpic.js"> </script>
+</head>
+<body>
+
+<div class="page">
+<a href="/blog/"><h1> Polym's Blog </h1></a><h1>|</h1>
+<hr>
+<img alt="" name="head_pic" src="" height=300 width=1000"/>
+<script>
+if(timeOut == null){
+loadImage();
+playImage();
+}
+</script>
+<div id="main" class="clearfix">
+<div class="row">
+<div class="span9">
+<div class="row">
+	<div class="span1 votecell">
+		<div class="vote">
+		<strong>
+8
+		</strong>
+		<p>
+7/		</p>
+		</div>
+	</div>
+	<div class="span8">
+		<div class="post-text">
+<h2>博客方案</h2>
+<hr />
+<h3>博客关键点</h3>
+<ul>
+<li>博客内容采用<code>markdown</code>编写</li>
+<li>采用<code>blog.list</code>记录博客的细节内容 [<em>主要解决创建时间的问题</em>] </li>
+<li>静态网页模板以及相关的<code>js/css</code>实现处理好</li>
+</ul>
+<h3>具体使用用例</h3>
+<h4>添加新博客</h4>
+<p><code>./scripts/blog.py add $title $filename</code></p>
+<p><em><code>$title</code>与<code>$filename</code>是对应的标题内容与md文件</em></p>
+<h4>修改现有博客</h4>
+<p><code>./scripts/blog.py change $filename</code></p>
+<p><em><code>$filename</code>是对应的md文件</em></p>
+<h4>删除博客</h4>
+<p><em>还没有想好</em></p>
+<h4>重新生成所有博客网页</h4>
+<p><code>./scripts/blog.py change</code></p>
+<h3>一些约定</h3>
+<p>_ &lt;待续&gt; _</p>
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
