@@ -739,7 +739,7 @@ body.nomsyh span.nomsyh{display:inline;}
 .noborder,.noborder td{border:none;}
 img.right,figure.right{float:right;margin:0 0 10px 10px;}
 img.left,figure.left{float:left;margin:0 10px 10px 0;}
-.page{width:940px;margin:0 auto;display:block;position:relative;clear:both;}
+.page{width:940px;margin:0 auto;display:block;position:relative;clear:both;background:#ffffff}
 header,#header{position:relative;margin-bottom:30px;height:80px;padding:0;}
 #main{min-height:300px;_height:300px;margin-bottom:40px;}
 #mainbar{float:left;width:700px;}
