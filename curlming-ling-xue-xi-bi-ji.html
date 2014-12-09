@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Polym's Fancy World - cURL命令学习笔记</title>
+        <meta charset="utf-8" />
+        
+        <!--Add SEO pagemap-->
+<!-- https://developers.google.com/custom-search/docs/structured_data?hl=es&csw=1#microformats -->
+<!--
+<PageMap>
+<DataObject type="document">
+    <Attribute name="title">cURL命令学习笔记</Attribute>
+    <Attribute name="author">hongbo.mo</Attribute>
+    <Attribute name="description">常用curl实例 1. 抓取页面内容到文件 curl -o home.html http://polym.github.io 2. 用-O（大写的），后面的url要具体到某个文件，不然抓不下来。我们还可以用正则来抓取东西 curl -O http://polym.github.io/blog/Git_learn.html curl -O http://polym.github.io/blog/G[a-z]t_learn.html 3. 模拟表单信息(-F)，模拟登录，保存cookie信息 curl -c ./cookie_c.txt -F log=aaaa -F ...</Attribute>
+    <Attribute name="page_count">1</Attribute>
+    <Attribute name="rating">5</Attribute>
+    <Attribute name="last_update">2014-12-08T00:00:00</Attribute>
+</DataObject>
+<DataObject type="metatags">
+    <Attribute name="category" value="misc"/>
+</DataObject>
+
+
+-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">-->
+        <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" />
+
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+
+		<style>
+body{font-size:18px}.title *{font-size:45px;color:#FFF}.navbar-brand,.title,h1,h2,h3,h4,h5{font-family:"Crete Round",Georgia,serif}.jumbotron{margin-top:80px}.large{font-size:50px;line-height:50px;padding:0 10px}.medium{font-size:30px;padding:0 5px}.small{font-size:15px;padding:0 5px}#content h1{margin-top:35px}address{display:inline}.info-margin{margin-left:10px}.info-tag{margin-left:5px;display:inline-block}.center{text-align:center}div.highlight{margin-top:20px;margin-bottom:20px}.socialbar{margin-left:20px}.none,.vcard *{display:none}.vcard .name{display:inline}
+div.highlight pre{background-color:#49483e}.c{color:#75715e}.err{color:#960050;background-color:#1e0010}.k{color:#66d9ef}.l{color:#ae81ff}.n{color:#f8f8f2}.o{color:#f92672}.p{color:#f8f8f2}.c1,.cm,.cp,.cs{color:#75715e}.ge{font-style:italic}.gs{font-weight:700}.kc,.kd{color:#66d9ef}.kn{color:#f92672}.kp,.kr,.kt{color:#66d9ef}.ld{color:#e6db74}.m{color:#ae81ff}.s{color:#e6db74}.na{color:#a6e22e}.nb{color:#f8f8f2}.nc{color:#a6e22e}.no{color:#66d9ef}.nd{color:#a6e22e}.ni{color:#f8f8f2}.ne,.nf{color:#a6e22e}.nl,.nn{color:#f8f8f2}.nx{color:#a6e22e}.py{color:#f8f8f2}.nt{color:#f92672}.nv{color:#f8f8f2}.ow{color:#f92672}.w{color:#f8f8f2}.mf,.mh,.mi,.mo{color:#ae81ff}.s2,.sb,.sc,.sd{color:#e6db74}.se{color:#ae81ff}.s1,.sh,.si,.sr,.ss,.sx{color:#e6db74}.bp,.vc,.vg,.vi{color:#f8f8f2}.il{color:#ae81ff}		  
+	    </style>
+	    
+
+		
+
+</head>
+
+<body id="index">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu_collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="">Polym's Fancy World</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div id="menu_collapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        
+      <li class=""><a href=""><i class="fi-home small"></i> Blog</a> </li>
+      
+      
+      <li class=""><a href="/archives.html"><i class="fi-folder"></i> Archive</a></li>
+      <li class=""><a href="/tags.html"><i class="fi-flag"></i> Tags</a> </li>
+      <li><a href="/"><i class="fi-rss"></i> RSS</a> </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron">
+                    <h1><a href="">Polym's Fancy World</a></h1>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <small></small>
+                        </div>
+                        <div class="col-sm-6">
+    <a href="https://plus.google.com/100756042489680387887" title="google-plus" target="_blank"><i class="fi-social-google-plus large"></i></a>
+    <a href="http://weibo.com/u/3176028541" title="weibo" target="_blank"><i class="fi-social-weibo large"></i></a>
+    <a href="https://github.com/polym" title="github" target="_blank"><i class="fi-social-github large"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+<section id="content" class="body">
+    <div class="panel panel-primary">
+        <div class="panel-heading title">
+            <a href="/curlming-ling-xue-xi-bi-ji.html" rel="bookmark" title="Permalink to cURL命令学习笔记">cURL命令学习笔记</a>
+        </div>
+        <div class="panel-body">
+            <div>
+
+By <span><a href="/author/hongbomo.html" rel="author">hongbo.mo</a></span>
+<span>
+ on <abbr class="published" title="2014-12-08T00:00:00"> Mon 08 December 2014 </abbr>
+</span>
+
+<span class="info-margin">
+    <a class="url" href="/category/misc.html" rel="tag"><i class="fi-folder small"></i> misc</a>
+</span>
+
+<span class="info-margin">
+</span>
+
+<span class="info-margin">
+    
+</span>
+
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <h2>常用curl实例</h2>
+<h4>1. 抓取页面内容到文件</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">o</span> <span class="n">home</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="o">:</span><span class="c1">//polym.github.io</span>
+</pre></div>
+
+
+<h4>2. 用-O（大写的），后面的url要具体到某个文件，不然抓不下来。我们还可以用正则来抓取东西</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//polym.github.io/blog/Git_learn.html</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//polym.github.io/blog/G[a-z]t_learn.html</span>
+</pre></div>
+
+
+<h4>3. 模拟表单信息(-F)，模拟登录，保存cookie信息</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">c</span> <span class="p">.</span><span class="o">/</span><span class="n">cookie_c</span><span class="p">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">F</span> <span class="n">log</span><span class="o">=</span><span class="n">aaaa</span> <span class="o">-</span><span class="n">F</span> <span class="n">pwd</span><span class="o">=******</span> <span class="n">http</span><span class="o">:</span><span class="c1">//blog.51yip.com/wp-login.php  </span>
+</pre></div>
+
+
+<h4>4. 伪造来源地址，有的网站会判断，请求来源地址</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">e</span> <span class="n">http</span><span class="o">:</span><span class="c1">//localhost http://blog.51yip.com/wp-login.php </span>
+</pre></div>
+
+
+<h4>5. 使用代理</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">x</span> <span class="mf">172.16.12.126</span><span class="o">:</span><span class="mi">3030</span> <span class="o">-</span><span class="n">o</span> <span class="n">home</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="o">:</span><span class="c1">//acm.zjut.edu.cn</span>
+</pre></div>
+
+
+<h4>6. 通过ftp下载文件</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">u</span> <span class="err">用户名</span><span class="o">:</span><span class="err">密码</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//blog.51yip.com/demo/curtain/bbstudy_files/style.css</span>
+</pre></div>
+
+
+<h4>7. 通过ftp上传</h4>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">T</span> <span class="n">test</span><span class="p">.</span><span class="n">sql</span> <span class="n">ftp</span><span class="o">:</span><span class="c1">//用户名:密码@ip:port/demo/curtain/bbstudy_files/  </span>
+</pre></div>
+
+
+<h2>附录</h2>
+<div class="highlight"><pre><span class="na">-a</span><span class="o">/--</span><span class="nb">append</span> <span class="err">上传文件时，附加到目标文件</span>
+<span class="na">-A</span><span class="o">/--</span><span class="nb">user</span><span class="na">-agent</span> <span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="err"> </span> <span class="err">设置用户代理发送给服务器</span>
+<span class="o">-</span> <span class="nx">anyauth</span><span class="err">  </span> <span class="err">可以使用“任何”身份验证方法</span>
+<span class="na">-b</span><span class="o">/--</span><span class="nb">cookie</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">=</span><span class="kt">string</span><span class="p">/</span><span class="nb">file</span><span class="o">&gt;</span> <span class="nb">cookie</span><span class="err">字符串或文件读取位置</span>
+<span class="o">-</span> <span class="nx">basic</span> <span class="err">使用</span><span class="nx">HTTP</span><span class="err">基本验证</span>
+<span class="na">-B</span><span class="o">/--</span><span class="nx">use</span><span class="na">-ascii</span> <span class="err">使用</span><span class="nx">ASCII</span> <span class="o">/</span><span class="err">文本传输</span>
+<span class="na">-c</span><span class="o">/--</span><span class="nb">cookie</span><span class="na">-jar</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span> <span class="err">操作结束后把</span><span class="nb">cookie</span><span class="err">写入到这个文件中</span>
+<span class="na">-C</span><span class="o">/--</span><span class="nb">continue</span><span class="na">-at</span> <span class="o">&lt;</span><span class="nx">offset</span><span class="o">&gt;</span><span class="err"> </span> <span class="err">断点续转</span>
+<span class="na">-d</span><span class="o">/--</span><span class="kd">data</span> <span class="o">&lt;</span><span class="kd">data</span><span class="o">&gt;</span><span class="err">  </span> <span class="nx">HTTP</span> <span class="nx">POST</span><span class="err">方式传送数据</span>
+<span class="o">--</span><span class="kd">data</span><span class="na">-ascii</span> <span class="o">&lt;</span><span class="kd">data</span><span class="o">&gt;</span><span class="err"> </span> <span class="err">以</span><span class="nx">ascii</span><span class="err">的方式</span><span class="nx">post</span><span class="err">数据</span>
+<span class="o">--</span><span class="kd">data</span><span class="na">-binary</span> <span class="o">&lt;</span><span class="kd">data</span><span class="o">&gt;</span> <span class="err">以二进制的方式</span><span class="nx">post</span><span class="err">数据</span>
+<span class="o">--</span><span class="nx">negotiate</span><span class="err">    </span> <span class="err">使用</span><span class="nx">HTTP</span><span class="err">身份验证</span>
+<span class="o">--</span><span class="nx">digest</span><span class="err">       </span> <span class="err">使用数字身份验证</span>
+<span class="o">--</span><span class="nx">disable</span><span class="na">-eprt</span><span class="err"> </span> <span class="err">禁止使用</span><span class="nx">EPRT</span><span class="err">或</span><span class="nx">LPRT</span>
+<span class="o">--</span><span class="nx">disable</span><span class="na">-epsv</span><span class="err"> </span> <span class="err">禁止使用</span><span class="nx">EPSV</span>
+<span class="na">-D</span><span class="o">/--</span><span class="nb">dump</span><span class="na">-header</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span> <span class="err">把</span><span class="k">header</span><span class="err">信息写入到该文件中</span>
+<span class="o">--</span><span class="nx">egd</span><span class="na">-file</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span> <span class="err">为随机数据</span><span class="p">(</span><span class="nx">SSL</span><span class="p">)</span><span class="err">设置</span><span class="nx">EGD</span> <span class="nx">socket</span><span class="err">路径</span>
+<span class="o">--</span><span class="nx">tcp</span><span class="na">-nodelay</span><span class="err">  </span> <span class="err">使用</span><span class="nx">TCP_NODELAY</span><span class="err">选项</span>
+<span class="na">-e</span><span class="o">/--</span><span class="k">referer</span> <span class="err">来源网址</span>
+<span class="na">-E</span><span class="o">/--</span><span class="nx">cert</span> <span class="o">&lt;</span><span class="nx">cert</span><span class="err">[</span><span class="p">:</span><span class="nx">passwd</span><span class="cp">]</span>&gt; 客户端证书文件和密码 (SSL)
+--cert-type <span class="nt">&lt;type&gt;</span> 证书文件类型 (DER/PEM/ENG) (SSL)
+--key <span class="nt">&lt;key&gt;</span>     私钥文件名 (SSL)
+--key-type <span class="nt">&lt;type&gt;</span> 私钥文件类型 (DER/PEM/ENG) (SSL)
+--pass  <span class="nt">&lt;pass&gt;</span>  私钥密码 (SSL)
+--engine <span class="nt">&lt;eng&gt;</span>  加密引擎使用 (SSL). &quot;--engine list&quot; for list
+--cacert <span class="nt">&lt;file&gt;</span> CA证书 (SSL)
+--capath <span class="nt">&lt;directory&gt;</span> CA目录 (made using c_rehash) to verify peer against (SSL)
+--ciphers <span class="nt">&lt;list&gt;</span>  SSL密码
+--compressed    要求返回是压缩的形势 (using deflate or gzip)
+--connect-timeout <span class="nt">&lt;seconds&gt;</span> 设置最大请求时间
+--create-dirs   建立本地目录的目录层次结构
+--crlf          上传是把LF转变成CRLF
+f/--fail          连接失败时不显示http错误
+--ftp-create-dirs 如果远程目录不存在，创建远程目录
+--ftp-method <span class="cp">[</span><span class="nx">multicwd</span><span class="p">/</span><span class="nx">nocwd</span><span class="p">/</span><span class="nx">singlecwd</span><span class="cp">]</span> 控制CWD的使用
+-ftp-pasv      使用 PASV/EPSV 代替端口
+--ftp-skip-pasv-ip 使用PASV的时候,忽略该IP地址
+--ftp-ssl       尝试用 SSL/TLS 来进行ftp数据传输
+--ftp-ssl-reqd  要求用 SSL/TLS 来进行ftp数据传输
+-F/--form <span class="nt">&lt;name</span><span class="err">=</span><span class="na">content</span><span class="nt">&gt;</span> 模拟http表单提交数据
+-form-string <span class="nt">&lt;name</span><span class="err">=</span><span class="na">string</span><span class="nt">&gt;</span> 模拟http表单提交数据
+-g/--globoff 禁用网址序列和范围使用{}和<span class="cp">[]</span>
+-G/--get 以get的方式来发送数据
+-h/--help 帮助
+-H/--header <span class="nt">&lt;line&gt;</span>自定义头信息传递给服务器
+--ignore-content-length  忽略的HTTP头信息的长度
+-i/--include 输出时包括protocol头信息
+-I/--head  只显示文档信息
+ 从文件中读取-j/--junk-session-cookies忽略会话Cookie
+ - 界面<span class="nt">&lt;interface&gt;</span>指定网络接口/地址使用
+ - krb4 <span class="err">&lt;</span>级别&gt;启用与指定的安全级别krb4
+ -j/--junk-session-cookies 读取文件进忽略session cookie
+ --interface <span class="nt">&lt;interface&gt;</span> 使用指定网络接口/地址
+ --krb4 <span class="nt">&lt;level&gt;</span>  使用指定安全级别的krb4
+ -k/--insecure 允许不使用证书到SSL站点
+ -K/--config  指定的配置文件读取
+ -l/--list-only 列出ftp目录下的文件名称
+ --limit-rate <span class="nt">&lt;rate&gt;</span> 设置传输速度
+ --local-port<span class="nt">&lt;NUM&gt;</span> 强制使用本地端口号
+ -m/--max-time <span class="nt">&lt;seconds&gt;</span> 设置最大传输时间
+ --max-redirs <span class="nt">&lt;num&gt;</span> 设置最大读取的目录数
+ --max-filesize <span class="nt">&lt;bytes&gt;</span> 设置最大下载的文件总量
+ -M/--manual  显示全手动
+ -n/--netrc 从netrc文件中读取用户名和密码
+ --netrc-optional 使用 .netrc 或者 URL来覆盖-n
+ --ntlm          使用 HTTP NTLM 身份验证
+ -N/--no-buffer 禁用缓冲输出
+ -o/--output 把输出写到该文件中
+ -O/--remote-name 把输出写到该文件中，保留远程文件的文件名
+ -p/--proxytunnel   使用HTTP代理
+ --proxy-anyauth 选择任一代理身份验证方法
+ --proxy-basic   在代理上使用基本身份验证
+ --proxy-digest  在代理上使用数字身份验证
+ --proxy-ntlm    在代理上使用ntlm身份验证
+ -P/--ftp-port <span class="nt">&lt;address&gt;</span> 使用端口地址，而不是使用PASV
+ -Q/--quote <span class="nt">&lt;cmd&gt;</span>文件传输前，发送命令到服务器
+ -r/--range <span class="nt">&lt;range&gt;</span>检索来自HTTP/1.1或FTP服务器字节范围
+ --range-file 读取（SSL）的随机文件
+ -R/--remote-time   在本地生成文件时，保留远程文件时间
+ --retry <span class="nt">&lt;num&gt;</span>   传输出现问题时，重试的次数
+ --retry-delay <span class="nt">&lt;seconds&gt;</span>  传输出现问题时，设置重试间隔时间
+ --retry-max-time <span class="nt">&lt;seconds&gt;</span> 传输出现问题时，设置最大重试时间
+ -s/--silent静音模式。不输出任何东西
+ -S/--show-error   显示错误
+ --socks4 <span class="nt">&lt;host</span><span class="cp">[</span><span class="p">:</span><span class="nb">port</span><span class="cp">]</span><span class="nt">&gt;</span> 用socks4代理给定主机和端口
+ --socks5 <span class="nt">&lt;host</span><span class="cp">[</span><span class="p">:</span><span class="nb">port</span><span class="cp">]</span><span class="nt">&gt;</span> 用socks5代理给定主机和端口
+ --stderr <span class="nt">&lt;file&gt;</span>
+ -t/--telnet-option <span class="nt">&lt;OPT</span><span class="err">=</span><span class="na">val</span><span class="nt">&gt;</span> Telnet选项设置
+ --trace <span class="nt">&lt;file&gt;</span>  对指定文件进行debug
+ --trace-ascii <span class="nt">&lt;file&gt;</span> Like --跟踪但没有hex输出
+ --trace-time    跟踪/详细输出时，添加时间戳
+ -T/--upload-file <span class="nt">&lt;file&gt;</span> 上传文件
+ --url <span class="nt">&lt;URL&gt;</span>     Spet URL to work with
+ -u/--user <span class="nt">&lt;user</span><span class="cp">[</span><span class="p">:</span><span class="nx">password</span><span class="cp">]</span><span class="nt">&gt;</span>设置服务器的用户和密码
+ -U/--proxy-user <span class="nt">&lt;user</span><span class="cp">[</span><span class="p">:</span><span class="nx">password</span><span class="cp">]</span><span class="nt">&gt;</span>设置代理用户名和密码
+ -v/--verbose
+ -V/--version 显示版本信息
+ -w/--write-out <span class="cp">[</span><span class="nb">format</span><span class="cp">]</span>什么输出完成后
+ -x/--proxy <span class="nt">&lt;host</span><span class="cp">[</span><span class="p">:</span><span class="nb">port</span><span class="cp">]</span><span class="nt">&gt;</span>在给定的端口上使用HTTP代理
+ -X/--request <span class="nt">&lt;command&gt;</span>指定什么命令
+ -y/--speed-time 放弃限速所要的时间。默认为30
+ -Y/--speed-limit 停止传输速度的限制，速度时间&#39;秒
+ -z/--time-cond  传送时间设置
+ -0/--http1.0  使用HTTP 1.0
+ -1/--tlsv1  使用TLSv1（SSL）
+ -2/--sslv2 使用SSLv2的（SSL）
+ -3/--sslv3         使用的SSLv3（SSL）
+ --3p-quote      like -Q for the source URL for 3rd party transfer
+ --3p-url        使用url，进行第三方传送
+ --3p-user       使用用户名和密码，进行第三方传送
+ -4/--ipv4   使用IP4
+ -6/--ipv6   使用IP6
+ -#/--progress-bar 用进度条显示当前的传送状态
+</pre></div>
+
+        </div>
+        <hr/>
+        <div class="panel-body socialbar">
+            <p>Probably, you want to share this article:</p>
+            <div>  </div>
+            <div>  </div>
+            <div>  </div>
+            <div> <!-- Place this tag where you want the +1 button to render. -->
+ </div>
+            <div>  </div>
+        </div>
+    </div>
+    <hr/>
+</section>
+            </div>
+        </div>
+                
+        
+        <footer id="footer" class="navbar-default">
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            &copy;
+                            <!-- SEO: vcard --> 
+                            <address id="hcard-Jordi-Burgos" class="vcard author">
+                                <a class="name" href="/author/jordi-burgos.html" rel="canonical">hongbo.mo</a>
+                                <a class="fn" href="/author/jordi-burgos.html" rel="canonical">hongbo.mo</a>
+                                <img src="http://i.imgur.com/GoIhFqm.jpg" alt="photo of " class="photo"/>
+                                <span class="title">Software Engineer</span>
+                                <span class="org">jordiburgos.com</span>
+                                <a class="url" href="http://jordiburgos.com">jordiburgos.com</a>
+                                <a class="email" href="mailto:jordiburgos@gmail.com">jordiburgos@gmail.com</a>
+                                <span class="address">
+                                    <span class="region">Valencia</span>
+                                    <span class="country-name">Spain</span>
+                                </span>
+                            </address>
+                            2013.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <!-- categories -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Categories</li>
+                              <li class="list-group-item active">
+                                  <a href="/category/misc.html"><i class="fi-folder medium"></i> misc</a>
+                              </li>
+                              <li class="list-group-item ">
+                                  <a href="/category/yeah.html"><i class="fi-folder medium"></i> yeah</a>
+                              </li>
+                        </ul>
+                        <!-- categories -->
+                    </div>
+                    <div class="col-sm-3">
+    <a href="https://plus.google.com/100756042489680387887" title="google-plus" target="_blank"><i class="fi-social-google-plus large"></i></a>
+    <a href="http://weibo.com/u/3176028541" title="weibo" target="_blank"><i class="fi-social-weibo large"></i></a>
+    <a href="https://github.com/polym" title="github" target="_blank"><i class="fi-social-github large"></i></a>
+                    </div>
+                </div>
+        </footer>
+		
+        <!--Add statistycs-->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins)     -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+</body>
+</html>
